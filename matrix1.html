@@ -1,0 +1,62 @@
+<html>
+
+<head>
+	<title>Matrix</title>
+	<script type="text/javascript">
+		function matrix(){
+			var mSize=document.getElementById("size").value;
+			var inputMatrix=document.getElementById("matrix").value;
+			var addDiagonal=0;
+			var arrayMatrix=inputMatrix.split(" ");
+			var eleMatrix=mSize*mSize;
+
+			if(arrayMatrix.length!=eleMatrix){
+				alert("Enter correct number of elements");
+					
+			}
+			var newArr = [];
+			while(arrayMatrix.length) {
+				newArr.push(arrayMatrix.splice(0,mSize));
+			}
+				
+			for(var i=0;i<mSize;i++){
+				for(var j=0;j<mSize;j++){
+					if(i==j){
+						addDiagonal +=parseInt(newArr[i][j]);
+					}
+				}
+			}
+			document.write("<b>Matrix of </b>"+mSize+"X"+mSize+"</br></br>");
+			text="<table>";
+			for(var i=0;i<mSize;i++){
+				text+="<tr>";
+				for(var j=0;j<mSize;j++){
+					text+="<td>"+newArr[i][j]+"</td>";
+					
+				}
+				text+="</tr>";
+			}
+			text+="</table>";
+			document.getElementById("tableId").innerHTML=text;
+			document.write("</br>Sum of diagonal elements : "+addDiagonal);
+
+		}
+
+	</script>	
+</head>
+	<body>
+	<center>
+          	<b>enter size of the matrix</b>
+    		<input type="text" name="size" id="size" />
+		</br></br>
+            	<b>enter matrix elements</b>
+               	<textarea name="matrix" id="matrix"></textarea>	
+		</br></br>	
+               	<button type="submit" value="Submit" onclick="matrix()">Enter</button>
+		<p id="tableId"></p>
+	</center>
+		
+	</body>
+
+
+</html>
